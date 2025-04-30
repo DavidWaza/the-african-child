@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -23,4 +24,113 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* nav */
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+/* stroke */
+nav.stroke ul li a,
+nav.fill ul li a {
+  position: relative;
+}
+nav.stroke ul li a:after,
+nav.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+nav.stroke ul li a:hover:after {
+  width: 100%;
+}
+
+.hero-bg {
+  background-image: url('/assets/img/school-kids-banner.jpg');
+  width: 100%;
+  height: 100vh;
+  background-position:cover;
+  background-size:center center;
+  background-repeat:no-repeat
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: floatFast 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.pattern-bg {
+  background-image: url('/assets/pattern-footer.png');
+  background-position: center center;
+  background-size: auto;
+  background-repeat: repeat;
+}
+
+.pattern-header {
+  background-image: url('/assets/pattern-header.png');
+  background-position: center center;
+  background-size: auto;
+  background-repeat: repeat;
+}
+
+.map{
+  background-image: url('/assets/map.png');
+  background-position: center center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  /* opacity: 0.15; */
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
 }
