@@ -14,11 +14,11 @@ const HeroBanner = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFade(false); // Start fade-out
+      setFade(false); 
       setTimeout(() => {
         setCurrent((prev) => (prev + 1) % images.length);
-        setFade(true); // Fade-in new image
-      }, 500); // match animation timing
+        setFade(true); 
+      }, 500); 
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -67,19 +67,59 @@ const HeroBanner = () => {
         <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 mb-8 animate-fade-in-up delay-200">
           Join us in giving every child the chance to learn, grow, and dream big.
         </p>
-        <a
-          href="#donate"
-          className="inline-block bg-yellow-400 text-black font-semibold text-lg px-8 py-4 rounded-full shadow-xl hover:bg-yellow-300 hover:scale-105 transition-all duration-300 animate-fade-in-up delay-400"
-        >
-          Support a Child Today
-        </a>
+        <div className="mt-12 animate-fade-in delay-700">
+          <a
+            href="#donate"
+            className="inline-block bg-yellow-400 text-black font-bold text-xl px-10 py-5 rounded-full shadow-lg hover:bg-yellow-300 hover:scale-110 transition-all duration-300 ease-in-out transform animate-cta-pulse"
+          >
+            Ignite a Future: Support a Child
+          </a>
+        </div>
       </div>
-
       {/* Floating Elements */}
       <div className="absolute top-10 left-10 w-24 h-24 bg-yellow-400/30 rounded-full animate-float-slow" />
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full animate-float-fast" />
+      <style jsx>{`
+      
+
+        @keyframes ctaPulse {
+          0% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(252, 211, 77, 0.7);
+          }
+          70% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 15px rgba(252, 211, 77, 0);
+          }
+          100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(252, 211, 77, 0);
+          }
+        }
+        .animate-cta-pulse {
+          animation: ctaPulse 2s infinite;
+        }
+
+        /* Add animation delays using utility classes if needed, or inline style */
+        .delay-100 {
+          animation-delay: 0.1s;
+        }
+        .delay-200 {
+          animation-delay: 0.2s;
+        }
+        .delay-300 {
+          animation-delay: 0.3s;
+        }
+        .delay-500 {
+          animation-delay: 0.5s;
+        }
+        .delay-700 {
+          animation-delay: 0.7s;
+        }
+      `}</style>
     </section>
   );
 };
+
 
 export default HeroBanner;
