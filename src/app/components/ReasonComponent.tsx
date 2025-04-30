@@ -2,6 +2,52 @@
 import React from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Buildings, PiggyBank, Users, BookOpen, GraduationCap } from '@phosphor-icons/react';
+
+const paragraphVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut"
+    }
+  }
+};
+
+const gridContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+interface InfoBlockProps {
+  icon?: React.ComponentType<{ className?: string }>;
+  color?: "yellow" | "orange";
+  children: React.ReactNode;
+  className?: string;
+}
+
+const InfoBlock: React.FC<InfoBlockProps> = ({ icon: Icon, color = "yellow", children, className = "" }) => {
+  const borderColorClass = color === "yellow" ? "border-yellow-300" : "border-orange-400"; 
+  const iconColorClass = color === "yellow" ? "text-yellow-300" : "text-orange-400";
+
+  return (
+    <motion.div
+      className={`text-balance text-base leading-relaxed border-l-4 ${borderColorClass} pl-4 bg-gradient-to-r from-black/20 to-black/10 p-5 rounded-r-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ease-out flex gap-4 items-start ${className}`}
+      variants={paragraphVariants}
+    >
+      {Icon && <Icon className={`w-6 h-6 ${iconColorClass} flex-shrink-0 mt-1`} aria-hidden="true" />}
+      <div className="flex-grow">{children}</div>
+    </motion.div>
+  );
+};
+
 
 const Reason = () => {
   const sectionRef = React.useRef(null);
@@ -10,133 +56,137 @@ const Reason = () => {
     offset: ["start end", "end start"],
   });
 
-  // Transform scroll progress into Y and X translations + rotation for images
-  const yImage1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const xImage1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const yImage2 = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const xImage2 = useTransform(scrollYProgress, [0, 1], [-50, 50]); 
+  const yImage1 = useTransform(scrollYProgress, [0, 1], [120, -120]);
+  const xImage1 = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const rotateImage1 = useTransform(scrollYProgress, [0, 1], [8, 20]);
+
+  const yImage2 = useTransform(scrollYProgress, [0, 1], [-120, 120]);
+  const xImage2 = useTransform(scrollYProgress, [0, 1], [-60, 60]);
+  const rotateImage2 = useTransform(scrollYProgress, [0, 1], [-8, -20]);
 
   return (
-    <section className="py-20 pattern-header" ref={sectionRef}>
-      <div className="lg:min-w-28 mx-auto py-10 px-6 sm:px-12 md:px-20 lg:px-32 relative">
-        <div className="rounded-lg bg-[#337463] lg:w-[60rem] mx-auto py-10 px-6 md:px-20 lg:p-32 pattern-bg relative">
-          {/* Animated Image 1 (Top) */}
+    <section className="py-24 bg-gray-50 pattern-header overflow-hidden" ref={sectionRef}> 
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative"> 
+        <div className="rounded-xl bg-[#337463] lg:w-[65rem] mx-auto py-12 px-6 md:px-16 lg:p-24 pattern-bg relative shadow-2xl text-gray-100"> 
           <motion.div
-            style={{
-              y: yImage1,
-              x: xImage1,
-              rotate: 10,
-              // transition: { ease: "easeOut", duration: 0.3 },
-            }}
-            className="absolute top-[-90px] left-10 z-10"
+            style={{ y: yImage1, x: xImage1, rotate: rotateImage1 }}
+            className="absolute top-[-70px] left-[-50px] md:top-[-100px] md:left-[-30px] z-10" 
           >
             <Image
               src={"/assets/student.jpg"}
-              alt="img"
-              width={224}
-              height={224}
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="rounded-lg h-auto w-40 object-center object-contain hidden md:block"
+              alt="Student learning with focus"
+              width={240}
+              height={240}
+              sizes="(max-width: 768px) 130px, 210px"
+              className="rounded-lg h-auto w-36 md:w-52 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" // Added hover effect 
+              onError={(e) => e.currentTarget.src = 'https://placehold.co/240x240/cccccc/ffffff?text=Student'}
             />
           </motion.div>
-          {/* Animated Image 2 (Bottom) */}
+
           <motion.div
-            style={{
-              y: yImage2,
-              x: xImage2,
-              rotate: -10,
-              // transition: { ease: "easeOut", duration: 0.3 },
-            }}
-            className="absolute bottom-[-50px] right-10 z-10"
+            style={{ y: yImage2, x: xImage2, rotate: rotateImage2 }}
+            className="absolute bottom-[-50px] right-[-40px] md:bottom-[-80px] md:right-[-20px] z-10" // Adjusted positioning slightly
           >
             <Image
               src={"/assets/smiling-kids.jpg"}
-              alt="img"
-              width={224}
-              height={224}
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="rounded-lg h-auto w-56 object-center object-contain hidden md:block"
+              alt="Group of happy, smiling children"
+              width={240} // Slightly larger
+              height={240}
+              sizes="(max-width: 768px) 160px, 240px"
+              className="rounded-lg h-auto w-44 md:w-60 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" // Added hover effect 
+              onError={(e) => e.currentTarget.src = 'https://placehold.co/240x240/cccccc/ffffff?text=Kids'}
             />
           </motion.div>
-          <div className="flex justify-center">
-            <h1 className="uppercase text-balance bg-[#ED8836] text-sm py-1 px-3.5 rounded-md font-medium">
+
+          <motion.div
+            className="flex justify-center mb-8" 
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h1 className="uppercase text-balance bg-[#FF9800] text-black text-base py-2 px-5 rounded-full font-bold shadow-lg tracking-wide">
               Why we do this?
             </h1>
-          </div>
-          <div className="text-center my-5">
-            <p className="text-lg md:text-2xl lg:text-4xl font-bold">
-              45 Million <span className="text-yellow-400">Children</span>{" "}
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.div
+            className="text-center my-6 md:my-8" 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <p className="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white drop-shadow-md"> {/* Bolder, larger, drop shadow */}
+              45 Million <span className="text-yellow-300 underline decoration-wavy decoration-orange-400/70 underline-offset-4">Children</span>{" "}
               Across 37 states are at Risk of{" "}
-              <span className="text-yellow-400">Uneducation</span>
+              <span className="text-yellow-300 underline decoration-wavy decoration-orange-400/70 underline-offset-4">Uneducation</span>
             </p>
-          </div>
-          <div className="py-10 text-balance">
-            <p>
-              Education is a fundamental right of every child. It is the
-              foundation for a better future and a powerful tool for breaking
-              the cycle of poverty. However, millions of children around the
-              world are still denied this basic right. Understanding the reasons
-              why children are not in school is the first step toward solving
-              the problem—and as an NGO committed to change, we have a crucial
-              role to play in ensuring every child has access to quality
-              education.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-5">
-            <div className="text-balance">
+          </motion.div>
+
+          <InfoBlock
+             icon={BookOpen} 
+             color="yellow"
+             className="py-6 md:py-8 mb-10 md:mb-12" 
+           
+          >
               <p>
-                One of the most significant barriers to education is poverty.
-                Many families simply cannot afford the costs associated with
-                schooling, such as tuition fees, uniforms, books, and
-                transportation. In households where survival is a daily
-                struggle, children are often required to work or help at home,
-                leaving little to no opportunity for formal education. The
-                burden of poverty extends beyond finances; it creates
-                environments where education is not prioritized because
-                immediate needs take precedence.
+                Education is a fundamental right of every child. It&apos;s the
+                foundation for a brighter future and a powerful tool for breaking
+                the cycle of poverty. However, millions worldwide are still denied
+                this basic right. Understanding why children aren&apos;t in school is
+                the first step—and as an NGO committed to change, we play a crucial
+                role in ensuring every child accesses quality education.
               </p>
-              <p className="py-5">
-                In many rural and underserved areas, physical access to schools
-                is a major issue. Some children live miles away from the nearest
-                school, and the journey can be long, dangerous, or even
-                impossible, especially for girls. Where schools do exist, they
-                are often poorly funded, overcrowded, and lacking in basic
-                facilities and trained teachers. The absence of safe and
-                supportive learning environments discourages both children and
-                their families from pursuing education.
-              </p>
+          </InfoBlock>
+
+
+          {/* Grid for subsequent paragraphs with stagger animation */}
+          <motion.div
+            className="grid md:grid-cols-2 gap-8 md:gap-10" // Increased gap
+            variants={gridContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {/* Grid Column 1 */}
+            <div className="flex flex-col gap-8 md:gap-10">
+              <InfoBlock icon={PiggyBank} color="orange">
+                <h3 className="font-semibold text-lg mb-2 text-orange-300">The Barrier of Poverty</h3>
+                <p>
+                  One significant hurdle is poverty. Many families can&apos;t afford schooling costs like fees, uniforms, books, or transport. When survival is the daily focus, children often work or help at home, leaving no room for education. Poverty creates environments where immediate needs overshadow learning.
+                </p>
+              </InfoBlock>
+
+              {/* Paragraph 2: Access */}
+              <InfoBlock icon={GraduationCap} color="orange">
+                 <h3 className="font-semibold text-lg mb-2 text-orange-300">Challenges in Access</h3>
+                 <p>
+                   In rural areas, reaching schools is tough. Children might live miles away, facing long or dangerous journeys, especially girls. Existing schools are often underfunded, crowded, and lack basic facilities or trained teachers. Unsafe learning environments discourage attendance.
+                 </p>
+              </InfoBlock>
             </div>
-            <div className="text-balance">
-              <p>
-                Despite these challenges, our NGO can play a vital role in
-                making education accessible to every child. We can provide
-                scholarships to cover tuition and related costs, easing the
-                financial burden on families. By distributing school supplies
-                and uniforms, we help remove the barriers that often prevent
-                children from attending school regularly. Our efforts can also
-                include building or renovating schools in remote communities,
-                ensuring that every child has a safe and welcoming place to
-                learn.
-              </p>
-              <p className="py-5">
-                Beyond infrastructure, our work involves engaging with local
-                communities to raise awareness about the value of education for
-                all children, including girls and those with disabilities. We
-                can challenge harmful cultural practices and advocate for equal
-                opportunities through outreach and sensitization programs. In
-                regions affected by conflict or displacement, we can offer
-                alternative learning solutions such as mobile classrooms,
-                radio-based lessons, or digital education platforms to ensure
-                that learning continues in times of crisis. Our commitment to
-                inclusive education can be reflected in the training we provide
-                to teachers and the resources we invest in making classrooms
-                accessible to children with diverse needs
-              </p>
+
+            {/* Grid Column 2 */}
+            <div className="flex flex-col gap-8 md:gap-10"> {/* Matched gap */}
+              <InfoBlock icon={Buildings} color="orange">
+                 <h3 className="font-semibold text-lg mb-2 text-orange-300">Our Role in Solutions</h3>
+                 <p>
+                   Despite challenges, we make education accessible. We provide scholarships and supplies, easing financial burdens. We build or renovate schools in remote areas, ensuring safe learning spaces. Our efforts remove barriers preventing regular attendance.
+                 </p>
+              </InfoBlock>
+
+              <InfoBlock icon={Users} color="orange">
+                 <h3 className="font-semibold text-lg mb-2 text-orange-300">Community & Inclusion</h3>
+                 <p>
+                   We engage communities, raising awareness about education&apos;s value for all, including girls and those with disabilities. We challenge harmful practices and advocate for equality. In crisis zones, we offer mobile classrooms or digital learning. We train teachers for inclusive classrooms accessible to diverse needs.
+                 </p>
+              </InfoBlock>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </motion.div>
+
+        </div> 
+      </div> 
+    </section> 
   );
 };
 
