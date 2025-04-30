@@ -11,10 +11,10 @@ const Reason = () => {
   });
 
   // Transform scroll progress into Y and X translations + rotation for images
-  const yImage1 = useTransform(scrollYProgress, [0, 1], [100, -100]); // Top image moves up
-  const xImage1 = useTransform(scrollYProgress, [0, 1], [50, -50]); // Top image shifts left-right
-  const yImage2 = useTransform(scrollYProgress, [0, 1], [-100, 100]); // Bottom image moves down
-  const xImage2 = useTransform(scrollYProgress, [0, 1], [-50, 50]); // Bottom image shifts right-left
+  const yImage1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const xImage1 = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const yImage2 = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+  const xImage2 = useTransform(scrollYProgress, [0, 1], [-50, 50]); 
 
   return (
     <section className="py-20 pattern-header" ref={sectionRef}>

@@ -74,7 +74,7 @@ const Headers = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 py-5 px-6 sm:px-12 md:px-20 lg:px-32 flex justify-between items-center font-medium transition-colors duration-300 ease-in-out ${navBgClass}`}
+      className={`fixed w-full top-0 z-50 py-5 px-6  lg:px-px-3 2xl:px-32 flex justify-between items-center font-medium transition-colors duration-300 ease-in-out ${navBgClass}`}
     >
       <div>
         <Link
@@ -91,60 +91,60 @@ const Headers = () => {
         </Link>
       </div>
 
-      <div className="hidden lg:flex items-center gap-8">
-        <ul className="flex gap-6">
-          {navItems.map((item) => {
-            const isActive = pathname === item.route;
-            let linkColorClass = "";
-            if (isActive) {
-              linkColorClass = `${activeLinkStyleBase} ${
-                isScrolled ? activeLinkStyleScrolled : activeLinkStyleTop
-              }`;
-            } else {
-              linkColorClass = isScrolled
-                ? inactiveLinkStyleScrolled
-                : inactiveLinkStyleTop;
-            }
-            const underlineColorClass = isScrolled ? "bg-black" : "bg-white";
+      <ul className="hidden lg:flex gap-4 flex-wrap whitespace-nowrap">
+        {navItems.map((item) => {
+          const isActive = pathname === item.route;
+          let linkColorClass = "";
+          if (isActive) {
+            linkColorClass = `${activeLinkStyleBase} ${
+              isScrolled ? activeLinkStyleScrolled : activeLinkStyleTop
+            }`;
+          } else {
+            linkColorClass = isScrolled
+              ? inactiveLinkStyleScrolled
+              : inactiveLinkStyleTop;
+          }
+          const underlineColorClass = isScrolled ? "bg-black" : "bg-white";
 
-            return (
-              <li key={item.id}>
-                <Link
-                  href={item.route}
-                  className={`relative group ${hoverEffectBase} transition-colors duration-300 ease-in-out ${linkColorClass}`}
-                >
-                  {item.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 ${underlineColorClass} scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out ${
-                      isActive ? "scale-x-100" : ""
-                    }`}
-                  ></span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-        <div className="flex gap-3">
-          <button
-            className={`border rounded-full py-2 px-5 shadow-sm hover:shadow-md transition-all ease-in duration-200 cursor-pointer text-sm ${
-              isScrolled
-                ? "border-[#c8c8c8] bg-white text-[#2e2e2e] hover:bg-gray-50"
-                : "border-white bg-white/20 text-white hover:bg-white/40"
-            }`}
-          >
-            Sign Up
-          </button>
-          <button
-            className={`border border-transparent rounded-full py-2 px-5 shadow-sm hover:shadow-md transition-all ease-in duration-200 cursor-pointer text-sm ${
-              isScrolled
-                ? "text-[#d6cfe1] bg-[#2e2e2e] hover:bg-black"
-                : "text-[#2e2e2e] bg-white hover:bg-gray-200"
-            }`}
-          >
-            Login
-          </button>
-        </div>
+          return (
+            <li key={item.id}>
+              <Link
+                href={item.route}
+                className={`text-sm md:text-base relative group px-3 ${hoverEffectBase} transition-colors duration-300 ease-in-out ${linkColorClass}`}
+              >
+                {item.label}
+                <span
+                  className={`absolute -bottom-1 left-0 w-full h-0.5 ${underlineColorClass} scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out ${
+                    isActive ? "scale-x-100" : ""
+                  }`}
+                ></span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+      <div className="hidden lg:flex flex-wrap gap-2 lg:gap-3">
+        <button
+          className={`border rounded-full py-2 px-5 shadow-sm hover:shadow-md transition-all ease-in duration-200 cursor-pointer text-sm ${
+            isScrolled
+              ? "border-[#c8c8c8] bg-white text-[#2e2e2e] hover:bg-gray-50"
+              : "border-white bg-white/20 text-white hover:bg-white/40"
+          }`}
+        >
+          Sign Up
+        </button>
+        <button
+          className={`border border-transparent rounded-full py-2 px-5 shadow-sm hover:shadow-md transition-all ease-in duration-200 cursor-pointer text-sm text-nowrap ${
+            isScrolled
+              ? "text-[#d6cfe1] bg-[#2e2e2e] hover:bg-black"
+              : "text-[#2e2e2e] bg-white hover:bg-gray-200"
+          }`}
+        >
+          Login
+        </button>
       </div>
+
+      {/* Mobile Menu Toggle (Stays the same) */}
       <div className="lg:hidden">
         <button
           onClick={toggleMobileMenu}
@@ -161,6 +161,7 @@ const Headers = () => {
         </button>
       </div>
 
+      {/* Mobile Menu Panel (Stays the same) */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
