@@ -3,6 +3,7 @@ import Reason from "./components/ReasonComponent";
 import SupportedCountries from "./components/SupportedCountries";
 import SuccessStory from "./components/SuccessStory";
 import UnwrittenChapterStory from "./components/SuccessVideo";
+import DonateComp from "./components/DonateWithUs";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <SupportedCountries />
       <UnwrittenChapterStory />
       <SuccessStory />
+      <DonateComp />
     </div>
   );
 }
