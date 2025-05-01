@@ -90,10 +90,10 @@ const Reason = () => {
             <Image
               src={"/assets/smiling-kids.jpg"}
               alt="Group of happy, smiling children"
-              width={240} // Slightly larger
+              width={240}
               height={240}
               sizes="(max-width: 768px) 160px, 240px"
-              className="rounded-lg h-auto w-44 md:w-60 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" // Added hover effect 
+              className="rounded-lg h-auto w-44 md:w-60 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" 
               onError={(e) => e.currentTarget.src = 'https://placehold.co/240x240/cccccc/ffffff?text=Kids'}
             />
           </motion.div>
@@ -108,15 +108,13 @@ const Reason = () => {
               Why we do this?
             </h1>
           </motion.div>
-
-          {/* Main Heading */}
           <motion.div
             className="text-center my-6 md:my-8" 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <p className="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white drop-shadow-md"> {/* Bolder, larger, drop shadow */}
+            <p className="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white drop-shadow-md"> 
               45 Million <span className="text-yellow-300 underline decoration-wavy decoration-orange-400/70 underline-offset-4">Children</span>{" "}
               Across 37 states are at Risk of{" "}
               <span className="text-yellow-300 underline decoration-wavy decoration-orange-400/70 underline-offset-4">Uneducation</span>
@@ -138,17 +136,13 @@ const Reason = () => {
                 role in ensuring every child accesses quality education.
               </p>
           </InfoBlock>
-
-
-          {/* Grid for subsequent paragraphs with stagger animation */}
           <motion.div
-            className="grid md:grid-cols-2 gap-8 md:gap-10" // Increased gap
+            className="grid md:grid-cols-2 gap-8 md:gap-10"
             variants={gridContainerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {/* Grid Column 1 */}
             <div className="flex flex-col gap-8 md:gap-10">
               <InfoBlock icon={PiggyBank} color="orange">
                 <h3 className="font-semibold text-lg mb-2 text-orange-300">The Barrier of Poverty</h3>
@@ -156,8 +150,6 @@ const Reason = () => {
                   One significant hurdle is poverty. Many families can&apos;t afford schooling costs like fees, uniforms, books, or transport. When survival is the daily focus, children often work or help at home, leaving no room for education. Poverty creates environments where immediate needs overshadow learning.
                 </p>
               </InfoBlock>
-
-              {/* Paragraph 2: Access */}
               <InfoBlock icon={GraduationCap} color="orange">
                  <h3 className="font-semibold text-lg mb-2 text-orange-300">Challenges in Access</h3>
                  <p>
@@ -166,8 +158,7 @@ const Reason = () => {
               </InfoBlock>
             </div>
 
-            {/* Grid Column 2 */}
-            <div className="flex flex-col gap-8 md:gap-10"> {/* Matched gap */}
+            <div className="flex flex-col gap-8 md:gap-10">
               <InfoBlock icon={Buildings} color="orange">
                  <h3 className="font-semibold text-lg mb-2 text-orange-300">Our Role in Solutions</h3>
                  <p>

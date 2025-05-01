@@ -5,29 +5,22 @@ import React from "react";
 const SupportedCountries = () => {
   return (
     <section className="relative overflow-hidden py-32 bg-gradient-to-br from-[#134B4A] to-[#2A746E] pattern-bg mx-auto px-6 sm:px-12 md:px-20 lg:px-32">
-      {/* Creative Background Layers */}
-      {/* Increased opacity for the map pattern */}
-      <div className="absolute inset-0 bg-[url('/map-pattern.svg')] opacity-30 z-0 animate-pulse-more"></div>
+     
+      <div className="absolute inset-0 map opacity-30 z-0 animate-pulse-more"></div>
       <div className="absolute inset-0 bg-gradient-to-t from-[#134B4A]/80 to-transparent z-5"></div>{" "}
-      {/* Subtle bottom fade */}
       <div className="relative z-10 flex flex-col gap-6 items-center justify-center text-white">
-        {/* Animated Header */}
         <div className="space-y-4 text-center animate-fade-in-up">
           <h2 className="text-5xl lg:text-7xl font-extrabold  bg-gradient-to-r bg-clip-text from-yellow-300 to-yellow-500 tracking-wide leading-tight">
             <span className="block text-5xl lg:text-8xl font-extrabold">
               One Nation
             </span>
-            
           </h2>
           <p className="text-balance text-lg md:text-xl text-gray-200 animate-fade-in delay-500">
             Touching lives across 37 vibrant states in Nigeria and extending
             hope to other parts of Africa.
           </p>
         </div>
-
-        {/* Animated Stat Cards Grid */}
         <div className="grid lg:grid-cols-2 gap-8 md:gap-12 mt-16 w-full max-w-4xl">
-          {/* Stat Card 1 */}
           <div className="flex flex-col items-center lg:items-start gap-4 p-8 rounded-2xl bg-black/30 backdrop-blur-sm shadow-2xl border border-transparent hover:border-yellow-400 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-yellow-500/30 animate-slide-in-left">
             <div className="flex items-center gap-4">
               <CurrencyNgn className="text-yellow-400 text-5xl lg:text-7xl animate-icon-bounce" />
@@ -41,7 +34,6 @@ const SupportedCountries = () => {
             </p>
           </div>
 
-          {/* Stat Card 2 */}
           <div className="flex flex-col items-center lg:items-start gap-4 p-8 rounded-2xl bg-black/30 backdrop-blur-sm shadow-2xl border border-transparent hover:border-yellow-400 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-yellow-500/30 animate-slide-in-right">
             <div className="flex items-center gap-4">
               <Student className="text-yellow-400 text-5xl lg:text-7xl animate-icon-bounce delay-200" />
@@ -56,7 +48,6 @@ const SupportedCountries = () => {
           </div>
         </div>
 
-        {/* Animated Call to Action */}
         <div className="mt-12 animate-fade-in delay-700">
           <a
             href="#donate"

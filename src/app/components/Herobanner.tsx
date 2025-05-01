@@ -59,7 +59,6 @@ const HeroBanner = () => {
         </svg>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight animate-slide-up">
           Every <span className="text-yellow-400">Child</span> Deserves a Chance to Learn
@@ -76,7 +75,6 @@ const HeroBanner = () => {
           </a>
         </div>
       </div>
-      {/* Floating Elements */}
       <div className="absolute top-10 left-10 w-24 h-24 bg-yellow-400/30 rounded-full animate-float-slow" />
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-purple-400/20 rounded-full animate-float-fast" />
       <style jsx>{`
