@@ -71,7 +71,7 @@ const HeroBanner = () => {
             href="#donate"
             className="inline-block bg-yellow-400 text-black font-bold text-xl px-10 py-5 rounded-full shadow-lg hover:bg-yellow-300 hover:scale-110 transition-all duration-300 ease-in-out transform animate-cta-pulse"
           >
-            Ignite a Future: Support a Child
+             Support a Child
           </a>
         </div>
       </div>

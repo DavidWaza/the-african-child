@@ -4,6 +4,7 @@ import SupportedCountries from "./components/SupportedCountries";
 import SuccessStory from "./components/SuccessStory";
 import UnwrittenChapterStory from "./components/SuccessVideo";
 import DonateComp from "./components/DonateWithUs";
+import JoinUs from "./components/JoinUs";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <UnwrittenChapterStory />
       <SuccessStory />
       <DonateComp />
+      <JoinUs />
     </div>
   );
 }
