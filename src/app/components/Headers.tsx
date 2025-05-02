@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Equals, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navItems = [
   { id: 1, route: "/about", label: "About Program" },
@@ -68,9 +69,9 @@ const Headers = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  const navBgClass = isScrolled ? "bg-[#EAE8E1] shadow-md" : "bg-transparent";
-  const logoColorClass = isScrolled ? "text-[#2e2e2e]" : "text-white";
-  const mobileIconColorClass = isScrolled ? "text-[#2e2e2e]" : "text-white";
+  const navBgClass = isScrolled ? "bg-[#3C7363] shadow-md pattern-bg" : "bg-transparent";
+  const logoColorClass = isScrolled ? "!text-white" : "text-white";
+  const mobileIconColorClass = isScrolled ? "!text-white" : "text-white";
 
   return (
     <nav
@@ -81,13 +82,26 @@ const Headers = () => {
           href={"/"}
           className={`uppercase text-lg hidden lg:block font-semibold tracking-wide hover:opacity-80 transition-colors duration-300 ease-in-out ${logoColorClass}`}
         >
-          The African Child
+          <Image
+            src={"/assets/aci-logo-2.png"}
+            width={95}
+            height={0}
+            sizes="100wv"
+            alt="Logo"
+            className="h-auto w-20"
+          />
         </Link>
         <Link
           href={"/"}
           className={`uppercase text-lg block lg:hidden font-semibold tracking-wide hover:opacity-80 transition-colors duration-300 ease-in-out ${logoColorClass}`}
         >
-          ACI
+           <Image
+            src={"/assets/aci-logo-2.png"}
+            width={95}
+            height={0}
+            alt="Logo"
+            className="h-auto w-full"
+          />
         </Link>
       </div>
 
@@ -110,7 +124,7 @@ const Headers = () => {
             <li key={item.id}>
               <Link
                 href={item.route}
-                className={`text-sm md:text-base relative group px-3 ${hoverEffectBase} transition-colors duration-300 ease-in-out ${linkColorClass}`}
+                className={`text-sm md:text-base text-white relative group px-3 ${hoverEffectBase} transition-colors duration-300 ease-in-out ${linkColorClass}`}
               >
                 {item.label}
                 <span
@@ -178,7 +192,7 @@ const Headers = () => {
                 const mobileLinkColor = isActive
                   ? "text-black font-bold"
                   : "text-gray-700";
-                const mobileHoverColor = "hover:text-black";
+                const mobileHoverColor = "hover:text-yellow-600";
 
                 return (
                   <motion.li
