@@ -5,7 +5,7 @@ import clsx from "clsx";
 const images = [
   "/assets/school-kids-banner.jpg",
   "/assets/smiling-kids.jpg",
-  "/assets/student.jpg",
+  "/assets/amina.jpg",
 ];
 
 const HeroBanner = () => {

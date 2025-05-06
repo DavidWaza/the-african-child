@@ -4,7 +4,7 @@ import React from "react";
 const JoinUs = () => {
   return (
     <div className="bg-[#E8EAF3] min-h-screen flex justify-center items-center pattern-bg">
-      <div className="mt-32">
+      <div className="mt-60">
         <h1 className="text-4xl lg:text-6xl font-bold text-center mb-4 text-[#333356] text-balance">
           Join Us Right Now!
         </h1>

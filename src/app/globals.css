@@ -136,3 +136,12 @@ nav.stroke ul li a:hover:after {
   /* opacity: 0.15; */
   transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
 }
+
+.about-hero {
+  background-image: url('/assets/african-life-child.jpg');
+  width: 100%;
+  height: 100vh;
+  background-position:cover;
+  background-size:center center;
+  background-repeat:no-repeat
+}

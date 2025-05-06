@@ -73,7 +73,7 @@ const Reason = () => {
             className="absolute top-[-70px] left-[-50px] md:top-[-100px] md:left-[-30px] z-10" 
           >
             <Image
-              src={"/assets/student.jpg"}
+              src={"/assets/amina.jpg"}
               alt="Student learning with focus"
               width={240}
               height={240}
@@ -115,9 +115,9 @@ const Reason = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <p className="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-white drop-shadow-md"> 
-              45 Million <span className="text-yellow-300 underline decoration-wavy decoration-orange-400/70 underline-offset-4">Children</span>{" "}
+              45 Million <span className="text-yellow-300  underline-offset-4">Children</span>{" "}
               Across 37 states are at Risk of{" "}
-              <span className="text-yellow-300 underline decoration-wavy decoration-orange-400/70 underline-offset-4">Uneducation</span>
+              <span className="text-yellow-300 underline-offset-4">Illiteracy</span>
             </p>
           </motion.div>
 
@@ -147,13 +147,13 @@ const Reason = () => {
               <InfoBlock icon={PiggyBank} color="orange">
                 <h3 className="font-semibold text-lg mb-2 text-orange-300">The Barrier of Poverty</h3>
                 <p>
-                  One significant hurdle is poverty. Many families can&apos;t afford schooling costs like fees, uniforms, books, or transport. When survival is the daily focus, children often work or help at home, leaving no room for education. Poverty creates environments where immediate needs overshadow learning.
+                  One significant hurdle is poverty. Many families can&apos;t afford schooling costs like fees, uniforms, books, or transport....
                 </p>
               </InfoBlock>
               <InfoBlock icon={GraduationCap} color="orange">
                  <h3 className="font-semibold text-lg mb-2 text-orange-300">Challenges in Access</h3>
                  <p>
-                   In rural areas, reaching schools is tough. Children might live miles away, facing long or dangerous journeys, especially girls. Existing schools are often underfunded, crowded, and lack basic facilities or trained teachers. Unsafe learning environments discourage attendance.
+                   In rural areas, reaching schools is tough. Children might live miles away, facing long or dangerous journeys, especially girls...
                  </p>
               </InfoBlock>
             </div>
@@ -162,14 +162,14 @@ const Reason = () => {
               <InfoBlock icon={Buildings} color="orange">
                  <h3 className="font-semibold text-lg mb-2 text-orange-300">Our Role in Solutions</h3>
                  <p>
-                   Despite challenges, we make education accessible. We provide scholarships and supplies, easing financial burdens. We build or renovate schools in remote areas, ensuring safe learning spaces. Our efforts remove barriers preventing regular attendance.
+                   Despite challenges, we make education accessible. We provide scholarships and supplies...
                  </p>
               </InfoBlock>
 
               <InfoBlock icon={Users} color="orange">
                  <h3 className="font-semibold text-lg mb-2 text-orange-300">Community & Inclusion</h3>
                  <p>
-                   We engage communities, raising awareness about education&apos;s value for all, including girls and those with disabilities. We challenge harmful practices and advocate for equality. In crisis zones, we offer mobile classrooms or digital learning. We train teachers for inclusive classrooms accessible to diverse needs.
+                   We engage communities, raising awareness about education&apos;s value for all, including girls and those with disabilities...
                  </p>
               </InfoBlock>
             </div>

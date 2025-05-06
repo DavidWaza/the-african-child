@@ -75,7 +75,7 @@ const Headers = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 py-5 px-6  lg:px-px-3 2xl:px-32 flex justify-between items-center font-medium transition-colors duration-300 ease-in-out ${navBgClass}`}
+      className={`fixed w-full top-0 z-50 py-1 px-6 lg:px-px-3 2xl:px-32 flex justify-between items-center font-medium transition-colors duration-300 ease-in-out ${navBgClass}`}
     >
       <div>
         <Link
@@ -83,12 +83,12 @@ const Headers = () => {
           className={`uppercase text-lg hidden lg:block font-semibold tracking-wide hover:opacity-80 transition-colors duration-300 ease-in-out ${logoColorClass}`}
         >
           <Image
-            src={"/assets/aci-logo-2.png"}
+            src={"/assets/aci-logo-2.svg"}
             width={95}
             height={0}
             sizes="100wv"
             alt="Logo"
-            className="h-auto w-20"
+            className="h-auto w-22"
           />
         </Link>
         <Link
@@ -96,11 +96,11 @@ const Headers = () => {
           className={`uppercase text-lg block lg:hidden font-semibold tracking-wide hover:opacity-80 transition-colors duration-300 ease-in-out ${logoColorClass}`}
         >
            <Image
-            src={"/assets/aci-logo-2.png"}
+            src={"/assets/aci-logo-2.svg"}
             width={95}
             height={0}
             alt="Logo"
-            className="h-auto w-full"
+            className="h-auto w-20"
           />
         </Link>
       </div>
