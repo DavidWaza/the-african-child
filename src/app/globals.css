@@ -163,3 +163,12 @@ nav.stroke ul li a:hover:after {
   background-size:center center;
   background-repeat:no-repeat
 }
+
+.volunteer-hero {
+  background-image: url('/assets/volunteer.jpg');
+  width: 100%;
+  height: 100vh;
+  background-position:cover;
+  background-size:center center;
+  background-repeat:no-repeat
+}

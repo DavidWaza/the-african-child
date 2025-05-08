@@ -21,7 +21,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({ children }) => {
       case "/transparency-dashboard":
         return "bg-transparency-pattern";
       case "/get-involved":
-        return "bg-get-involved-pattern";
+        return "volunteer-hero";
       case "/contact-us":
         return "bg-contact-us-pattern";
       default:
@@ -42,7 +42,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({ children }) => {
       case "/transparency-dashboard":
         return "bg-transparency-pattern";
       case "/get-involved":
-        return "bg-get-involved-pattern";
+        return "Become a Volunteer";
       case "/contact-us":
         return "bg-contact-us-pattern";
       default:
