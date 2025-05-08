@@ -7,8 +7,8 @@ import GalleryPage from "./components/Gallery";
 const OurWork = () => {
   return (
     <HeroLayout>
-      <UnwrittenChapterStory />
       <GalleryPage />
+      <UnwrittenChapterStory />
       <CreativeSuccessStories />
     </HeroLayout>
   );

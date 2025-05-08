@@ -52,7 +52,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({ children }) => {
   return (
     <div>
       <div
-        className={`relative ${HeroBackground()} flex items-center justify-center bg-cover bg-center`}
+        className={`relative ${HeroBackground()} hero-common flex items-center justify-center bg-cover bg-center`}
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative z-10 text-center text-white">

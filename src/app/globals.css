@@ -137,38 +137,26 @@ nav.stroke ul li a:hover:after {
   transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
 }
 
+.hero-common {
+  width: 100%;
+  height: 70vh;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .about-hero {
   background-image: url('/assets/african-life-child.jpg');
-  width: 100%;
-  height: 100vh;
-  background-position:cover;
-  background-size:center center;
-  background-repeat:no-repeat
 }
 
 .our-work-hero {
   background-image: url('/assets/community-help.jpg');
-  width: 100%;
-  height: 100vh;
-  background-position:cover;
-  background-size:center center;
-  background-repeat:no-repeat
 }
 
 .donate-hero {
   background-image: url('/assets/donation-bg.jpg');
-  width: 100%;
-  height: 100vh;
-  background-position:cover;
-  background-size:center center;
-  background-repeat:no-repeat
 }
 
 .volunteer-hero {
   background-image: url('/assets/volunteer.jpg');
-  width: 100%;
-  height: 100vh;
-  background-position:cover;
-  background-size:center center;
-  background-repeat:no-repeat
 }

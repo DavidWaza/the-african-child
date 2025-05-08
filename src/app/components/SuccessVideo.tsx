@@ -47,7 +47,7 @@ const VideoSuccessStory = () => {
                 ref={videoRef}
                 controls 
                 poster={videoPoster}
-                className="w-full h-full object-cover"
+                className="w-full h-[80%] object-cover"
                 preload="metadata"
                 onPlay={handleVideoPlay}
                 onPause={handleVideoPause}
@@ -59,7 +59,7 @@ const VideoSuccessStory = () => {
 
               {!isPlaying && (
                 <motion.div
-                  className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 cursor-pointer transition-opacity duration-300 opacity-100 group-hover:bg-opacity-50"
+                  className="absolute inset-0 h-[80%] flex items-center justify-center bg-black bg-opacity-40 cursor-pointer transition-opacity duration-300 opacity-100 group-hover:bg-opacity-50"
                   onClick={handlePlayClick}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}

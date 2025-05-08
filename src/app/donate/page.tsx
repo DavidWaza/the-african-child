@@ -129,14 +129,6 @@ const messageVariants = {
   },
 };
 
-const footerVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut", delay: 0.8 },
-  },
-};
 
 export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(25);
@@ -148,7 +140,7 @@ export default function DonatePage() {
   >(null);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const pageTitle = "Support Our Cause";
+  const pageTitle = "Support Our Children's Future";
   const pageSubtitle =
     "Your generous contribution empowers us to continue our mission and bring positive change to the lives of African children. Every donation, big or small, makes a significant impact.";
 
@@ -427,18 +419,7 @@ export default function DonatePage() {
           </motion.div>
         </motion.main>
 
-        <motion.footer
-          variants={footerVariants}
-          initial="initial"
-          animate="animate"
-          className="text-center py-10 text-slate-500 text-sm border-t border-slate-200 mt-12"
-        >
-          <p>
-            &copy; {new Date().getFullYear()} The African Child NGO. All rights
-            reserved.
-          </p>
-          <p>Together, we can build a brighter future.</p>
-        </motion.footer>
+       
       </motion.div>
     </HeroLayout>
   );
