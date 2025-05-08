@@ -15,7 +15,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({ children }) => {
       case "/about":
         return "about-hero";
       case "/our-work":
-        return "bg-our-work-pattern";
+        return "our-work-hero";
       case "/donate":
         return "bg-donate-pattern";
       case "/transparency-dashboard":
@@ -36,7 +36,7 @@ const HeroLayout: React.FC<HeroLayoutProps> = ({ children }) => {
       case "/about":
         return "About Us";
       case "/our-work":
-        return "bg-our-work-pattern";
+        return "Our Work";
       case "/donate":
         return "bg-donate-pattern";
       case "/transparency-dashboard":

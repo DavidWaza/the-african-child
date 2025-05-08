@@ -48,7 +48,7 @@ const AboutUsContent = () => {
               </span>
             </p>
             <p className="md:w-1/2 py-5 md:pt-10 mx-auto md:ml-auto mr-0">
-              Accoding to{" "}
+              According to{" "}
               <span className="italic text-yellow-400">Ajazeera News</span>
             </p>
           </motion.div>
