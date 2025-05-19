@@ -229,7 +229,7 @@ const NigeriaMap: React.FC = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <h1 className="text-black text-center pt-20 text-6xl font-bold">
+      <h1 className="text-black text-center pt-10 lg:pt-20 text-2xl lg:text-6xl font-bold">
         Our Supported States
       </h1>
       <div className="w-full flex justify-center items-center py-8">
