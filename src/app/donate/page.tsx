@@ -1,39 +1,71 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Gift,
   Heart,
-  Loader2,
-  CheckCircle2,
-  AlertTriangle,
-  DollarSign,
-} from "lucide-react";
-import HeroLayout from "../HeroLayout";
+  CircleNotch,
+  CheckCircle,
+  Warning,
+  CurrencyDollar,
+  CurrencyEur,
+  CurrencyNgn,
+  // PoundSterling, // Example, add if needed
+} from "@phosphor-icons/react";
+import HeroLayout from "../HeroLayout"; // Assuming this is correctly pathed
 
-const predefinedPledges = [
+// --- CURRENCY SETUP ---
+interface Currency {
+  code: string;
+  symbol: string;
+  name: string;
+  placeholder: string;
+  icon: JSX.Element;
+}
+
+const currencies: Currency[] = [
+  {
+    code: "USD",
+    symbol: "$",
+    name: "US Dollar",
+    placeholder: "e.g., 75.00",
+    icon: <CurrencyDollar size={18} className="text-slate-400" />,
+  },
+  {
+    code: "EUR",
+    symbol: "€",
+    name: "Euro",
+    placeholder: "e.g., 70.00",
+    icon: <CurrencyEur size={18} className="text-slate-400" />,
+  },
+  {
+    code: "NGN",
+    symbol: "₦",
+    name: "Nigerian Naira",
+    placeholder: "e.g., 50000",
+    icon: <CurrencyNgn size={18} className="text-slate-400" />,
+  },
+];
+
+const predefinedPledgesBase = [
   {
     amount: 10,
-    label: "$10",
     description: "Provides notebooks & pens.",
     icon: <Gift size={20} />,
   },
   {
     amount: 25,
-    label: "$25",
     description: "Buys a school uniform.",
     icon: <Gift size={20} />,
   },
   {
     amount: 50,
-    label: "$50",
     description: "Feeds a child for a month.",
     icon: <Gift size={20} />,
   },
   {
     amount: 100,
-    label: "$100",
     description: "School supplies for a year.",
     icon: <Gift size={20} />,
   },
@@ -129,7 +161,6 @@ const messageVariants = {
   },
 };
 
-
 export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(25);
   const [customAmount, setCustomAmount] = useState<string>("");
@@ -139,6 +170,15 @@ export default function DonatePage() {
     "success" | "error" | null
   >(null);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [selectedCurrencyCode, setSelectedCurrencyCode] = useState<string>(
+    currencies[0].code
+  );
+  const selectedCurrency =
+    currencies.find((c) => c.code === selectedCurrencyCode) || currencies[0];
+  const dynamicPledges = predefinedPledgesBase.map((pledge) => ({
+    ...pledge,
+    label: `${selectedCurrency.symbol}${pledge.amount}`,
+  }));
 
   const pageTitle = "Support Our Children's Future";
   const pageSubtitle =
@@ -170,10 +210,12 @@ export default function DonatePage() {
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    if (/^\d*\.?\d*$/.test(value)) {
+    if (/^\d*\.?\d*$/.test(value) && (value.match(/\./g) || []).length <= 1) {
       setCustomAmount(value);
       if (value) setSelectedAmount(null);
       setDonationStatus(null);
+    } else if (value === "") {
+      setCustomAmount("");
     }
   };
 
@@ -188,13 +230,19 @@ export default function DonatePage() {
     setDonationStatus(null);
     setErrorMessage("");
 
+    console.log(
+      `Attempting to donate: ${finalAmount} ${selectedCurrency.code}`
+    );
+
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
     if (Math.random() > 0.1) {
       setDonationStatus("success");
-      setSelectedAmount(25);
+      const defaultPledge =
+        predefinedPledgesBase.find((p) => p.amount === 25) ||
+        predefinedPledgesBase[0];
+      setSelectedAmount(defaultPledge.amount);
       setCustomAmount("");
-      setFinalAmount(25);
     } else {
       setDonationStatus("error");
       setErrorMessage(
@@ -267,20 +315,46 @@ export default function DonatePage() {
               Choose an amount or enter your own.
             </motion.p>
 
+            {/* --- CURRENCY SELECTOR --- */}
+            <motion.div className="mb-6" variants={formElementVariants}>
+              <label
+                htmlFor="currencySelector"
+                className="block text-sm font-medium text-slate-700 mb-1"
+              >
+                Select Currency:
+              </label>
+              <select
+                id="currencySelector"
+                name="currencySelector"
+                value={selectedCurrencyCode}
+                onChange={(e) => {
+                  setSelectedCurrencyCode(e.target.value);
+                  setDonationStatus(null);
+                }}
+                className="w-full p-3 border border-slate-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-teal-500 bg-white"
+              >
+                {currencies.map((currency) => (
+                  <option key={currency.code} value={currency.code}>
+                    {currency.name} ({currency.symbol})
+                  </option>
+                ))}
+              </select>
+            </motion.div>
+
             <motion.div
               className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8"
               variants={staggerContainerVariants}
             >
-              {predefinedPledges.map((pledge) => (
+              {dynamicPledges.map((pledge) => (
                 <motion.button
-                  key={pledge.amount}
+                  key={`${selectedCurrency.code}-${pledge.amount}`}
                   variants={pledgeButtonVariants}
                   whileHover="hover"
                   whileTap="tap"
                   onClick={() => handlePledgeSelect(pledge.amount)}
                   className={`p-4 rounded-lg border-2 text-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400
                     ${
-                      selectedAmount === pledge.amount
+                      selectedAmount === pledge.amount && !customAmount
                         ? "bg-teal-500 border-teal-500 text-white shadow-lg"
                         : "bg-slate-50 border-slate-200 text-slate-700 hover:border-teal-300 hover:bg-teal-50"
                     }`}
@@ -288,7 +362,6 @@ export default function DonatePage() {
                   <span className="block text-xl font-bold">
                     {pledge.label}
                   </span>
-                  {/* <span className="text-xs mt-1 hidden sm:block opacity-80">{pledge.description}</span> */}
                 </motion.button>
               ))}
             </motion.div>
@@ -298,11 +371,11 @@ export default function DonatePage() {
                 htmlFor="customAmount"
                 className="block text-sm font-medium text-slate-700 mb-1"
               >
-                Or Enter a Custom Amount:
+                Or Enter a Custom Amount ({selectedCurrency.code}):
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <DollarSign size={18} className="text-slate-400" />
+                  {selectedCurrency.icon}
                 </div>
                 <input
                   type="text"
@@ -315,7 +388,7 @@ export default function DonatePage() {
                     setSelectedAmount(null);
                     setDonationStatus(null);
                   }}
-                  placeholder="e.g., 75.00"
+                  placeholder={selectedCurrency.placeholder}
                   className={`w-full pl-10 pr-4 py-3 border rounded-lg shadow-sm transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-1
                     ${
                       customAmount && !selectedAmount
@@ -332,13 +405,14 @@ export default function DonatePage() {
             >
               <p className="text-slate-600">You are donating:</p>
               <motion.p
-                key={finalAmount}
+                key={`${selectedCurrency.symbol}-${finalAmount}`}
                 initial={{ opacity: 0.8, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.2 }}
                 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-sky-600"
               >
-                ${finalAmount > 0 ? finalAmount.toFixed(2) : "0.00"}
+                {selectedCurrency.symbol}
+                {finalAmount > 0 ? finalAmount.toFixed(2) : "0.00"}
               </motion.p>
             </motion.div>
 
@@ -360,7 +434,7 @@ export default function DonatePage() {
             >
               {isProcessing ? (
                 <>
-                  <Loader2 size={20} className="animate-spin mr-2" />{" "}
+                  <CircleNotch size={20} className="animate-spin mr-2" />{" "}
                   Processing...
                 </>
               ) : (
@@ -379,7 +453,7 @@ export default function DonatePage() {
                   exit="exit"
                   className="mt-6 p-4 bg-green-50 border border-green-300 text-green-700 rounded-lg flex items-center"
                 >
-                  <CheckCircle2 size={20} className="mr-3 flex-shrink-0" />
+                  <CheckCircle size={20} className="mr-3 flex-shrink-0" />
                   <div>
                     <span className="font-semibold">
                       Thank you for your generous donation!
@@ -396,7 +470,7 @@ export default function DonatePage() {
                   exit="exit"
                   className="mt-6 p-4 bg-red-50 border border-red-300 text-red-700 rounded-lg flex items-center"
                 >
-                  <AlertTriangle size={20} className="mr-3 flex-shrink-0" />
+                  <Warning size={20} className="mr-3 flex-shrink-0" />
                   <div>
                     <span className="font-semibold">Donation Error:</span>{" "}
                     {errorMessage}
@@ -418,8 +492,6 @@ export default function DonatePage() {
             </motion.div>
           </motion.div>
         </motion.main>
-
-       
       </motion.div>
     </HeroLayout>
   );

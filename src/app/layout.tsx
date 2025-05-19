@@ -3,10 +3,12 @@ import { Open_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import Headers from "./components/Headers";
 import Footer from "./components/Footer";
+import { Toaster } from "sonner";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const inter = Inter({
@@ -31,6 +33,7 @@ export default function RootLayout({
         className={`${openSans.variable} ${inter.className} antialiased`}
       >
         <Headers />
+        <Toaster richColors />
         {children}
         <Footer />
       </body>
