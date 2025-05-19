@@ -77,20 +77,19 @@ const OurPartners = () => {
     },
   };
 
-  // To make the scroll truly seamless, we duplicate the partners list.
   const duplicatedPartners = [...partnersData, ...partnersData];
 
   return (
     <motion.section
       ref={sectionRef}
-      className="bg-[#F9F5F2] py-16 md:py-24 lg:py-28 px-6 lg:px-px-3 2xl:px-32"
+      className="bg-[#F9F5F2] py-16 md:py-24 lg:py-28 px-2 lg:px-px-3 2xl:px-32"
       initial="hidden"
       animate={sectionControls}
     >
       <div className="container mx-auto px-6 lg:px-8">
         <motion.h2
           variants={titleVariants}
-          className="text-3xl lg:text-4xl font-bold text-[#407666] text-center mb-12 md:mb-16 tracking-tight"
+          className="text-2xl lg:text-4xl font-bold text-[#407666] text-center mb-12 md:mb-16 tracking-tight"
         >
           We&apos;re Proud to Partner With
         </motion.h2>

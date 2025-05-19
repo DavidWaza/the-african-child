@@ -307,7 +307,7 @@ export default function GalleryPage() {
       >
         <header className="py-12 md:py-20 text-center overflow-hidden">
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#3D7464] bg-clip-text mb-6 inline-block"
+            className="text-2xl md:text-5xl lg:text-6xl font-extrabold text-[#3D7464] bg-clip-text mb-6 inline-block"
             variants={sentenceVariants}
             initial="hidden"
             animate="visible"
@@ -323,7 +323,7 @@ export default function GalleryPage() {
             ))}
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto px-4"
+            className="md:text-xl text-slate-600 max-w-3xl mx-auto px-4"
             variants={subtitleVariants}
             initial="initial"
             animate="animate"

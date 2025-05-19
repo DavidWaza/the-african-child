@@ -48,12 +48,12 @@ const SupportedCountries = () => {
           </div>
         </div>
 
-        <div className="mt-12 animate-fade-in delay-700">
+        <div className="mt-12 animate-fade-in delay-700 flex flex-col items-center gap-4">
           <a
             href="#donate"
             className="inline-block bg-yellow-400 text-black font-bold text-xl px-10 py-5 rounded-full shadow-lg hover:bg-yellow-300 hover:scale-110 transition-all duration-300 ease-in-out transform animate-cta-pulse whitespace-nowrap"
           >
-            Ignite a Future: Support a Child
+            Support a Child
           </a>
         </div>
       </div>

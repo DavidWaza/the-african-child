@@ -10,7 +10,7 @@ const DonateComp = () => {
   return (
     <div className="flex items-center justify-center from-gray-800 to-gray-900 relative">
       <motion.div
-        className="w-full max-w-7xl bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden absolute -top-20"
+        className="w-full max-w-7xl bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden lg:absolute -top-20"
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}

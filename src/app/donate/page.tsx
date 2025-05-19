@@ -267,7 +267,7 @@ export default function DonatePage() {
       >
         <header className="py-12 md:py-20 text-center overflow-hidden">
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 mb-6 inline-block"
+            className="text-2xl md:text-5xl lg:text-6xl px-10 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 mb-6 inline-block"
             variants={sentenceVariants}
             initial="hidden"
             animate="visible"
@@ -283,7 +283,7 @@ export default function DonatePage() {
             ))}
           </motion.h1>
           <motion.p
-            className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto px-4"
+            className="md:text-xl text-slate-600 max-w-3xl mx-auto px-4"
             variants={subtitleVariants}
             initial="initial"
             animate="animate"

@@ -102,12 +102,12 @@ const CreativeSuccessStories = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-24 md:py-32 bg-[#0f3433] mx-auto pattern-bg">
+    <section className="relative overflow-hidden py-20 md:py-32 bg-[#0f3433] mx-auto pattern-bg">
       <div className="absolute inset-0 bg-gradient-to-br from-[#134B4A]/30 via-transparent to-[#2A746E]/20 opacity-50"></div>
 
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-12 md:mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 bg-gradient-to-r bg-clip-text text-transparent from-yellow-300 to-yellow-500 tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 bg-gradient-to-r bg-clip-text text-transparent from-yellow-300 to-yellow-500 tracking-tight leading-tight">
             Journeys of Transformation
           </h2>
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
@@ -115,7 +115,7 @@ const CreativeSuccessStories = () => {
           </p>
         </div>
 
-        <div className="relative px-8">
+        <div className="relative">
           <Swiper
             modules={[Navigation, Pagination, A11y, EffectCoverflow, Autoplay]} // Added Autoplay module
             spaceBetween={30}

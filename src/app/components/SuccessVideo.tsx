@@ -34,7 +34,7 @@ const VideoSuccessStory = () => {
           <div className="max-w-4xl mx-auto">
             <div className="mb-8 text-center">
               <FilmReel className="mx-auto h-12 w-12 text-yellow-500 mb-3" />
-              <h1 className="text-3xl md:text-4xl font-bold mb-2 text-white">
+              <h1 className="text-2xl md:text-4xl font-bold mb-2 text-white">
                 {studentName}&apos;s Story: A Journey of Transformation
               </h1>
               <p className="text-lg text-gray-400">
@@ -47,7 +47,7 @@ const VideoSuccessStory = () => {
                 ref={videoRef}
                 controls 
                 poster={videoPoster}
-                className="w-full h-[80%] object-cover"
+                className="w-full lg:h-[80%] object-cover"
                 preload="metadata"
                 onPlay={handleVideoPlay}
                 onPause={handleVideoPause}
@@ -59,7 +59,7 @@ const VideoSuccessStory = () => {
 
               {!isPlaying && (
                 <motion.div
-                  className="absolute inset-0 h-[80%] flex items-center justify-center bg-black bg-opacity-40 cursor-pointer transition-opacity duration-300 opacity-100 group-hover:bg-opacity-50"
+                  className="absolute inset-0 lg:h-[80%] flex items-center justify-center bg-black/55 cursor-pointer transition-opacity duration-300 opacity-100 group-hover:bg-opacity-50"
                   onClick={handlePlayClick}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -71,7 +71,7 @@ const VideoSuccessStory = () => {
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                   >
-                    <Play className="h-12 w-12 md:h-16 md:w-16 text-yellow-600 fill-current" />
+                    <Play className="h-5 w-5 md:h-16 md:w-16 text-yellow-600 fill-current" />
                   </motion.div>
                 </motion.div>
               )}

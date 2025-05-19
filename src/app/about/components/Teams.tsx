@@ -1,4 +1,4 @@
-// components/OurTeam.js
+
 "use client";
 import React from "react";
 import Image from "next/image";
@@ -7,17 +7,6 @@ import { useInView } from "react-intersection-observer";
 import { LinkedinLogo, TwitterLogo, User } from "@phosphor-icons/react"; // Added User for placeholder
 
 const teamMembers = [
-  //   {
-  //     id: 1,
-  //     name: "Daniel Livingstone",
-  //     role: "Co-Founder & CEO",
-  //     image: "/assets/stone.jpg",
-  //     bio: "Mr. Livingstone is dedicated to creating lasting change through education and empowerment.",
-  //     socials: {
-  //       linkedin: "https://linkedin.com/",
-  //       twitter: "https://twitter.com/",
-  //     },
-  //   },
   {
     id: 2,
     name: "Idemeto Emediong",
@@ -39,17 +28,7 @@ const teamMembers = [
       twitter: "https://twitter.com/",
     },
   },
-  //     {
-  //     id: 4,
-  //     name: "Kolawole Matthew",
-  //     role: "Tech & Innovation Lead & Digital Strategist",
-  //     image: "/images/team/chinedu-nwosu.jpg",
-  //     bio: "Mr Matthew drives our digital initiatives, bringing innovative solutions to our work.",
-  //     socials: {
-  //       linkedin: "https://linkedin.com/",
-  //       twitter: "https://twitter.com/",
-  //     },
-  //   },
+
 ];
 
 const OurTeam = () => {
@@ -110,7 +89,7 @@ const OurTeam = () => {
   return (
     <motion.section
       ref={sectionRef}
-      className="bg-[#171D2C] py-20 md:py-24 lg:py-32 px-6 lg:px-px-3 2xl:px-32"
+      className="bg-[#171D2C] py-20 md:py-24 lg:py-32 px-2 lg:px-px-3 2xl:px-32"
       initial="hidden"
       animate={sectionControls}
       variants={sectionVariants}
@@ -118,13 +97,13 @@ const OurTeam = () => {
       <div className="container mx-auto px-6 lg:px-8 2xl:px-20">
         <motion.h2
           variants={titleVariants}
-          className="text-4xl lg:text-5xl font-bold text-yellow-400 text-center mb-6 tracking-tight"
+          className="text-2xl lg:text-5xl font-bold text-yellow-400 text-center mb-6 tracking-tight"
         >
           Meet Our Dedicated Team
         </motion.h2>
         <motion.p
           variants={titleVariants}
-          className="text-lg lg:text-xl text-gray-300 text-center max-w-3xl mx-auto"
+          className="text-md lg:text-xl text-gray-300 text-center max-w-3xl mx-auto text-balance"
         >
           Passionate individuals committed to making a difference. We are a
           collective of thinkers, doers, and dreamers, united by a shared vision

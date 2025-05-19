@@ -65,9 +65,9 @@ const Reason = () => {
   const rotateImage2 = useTransform(scrollYProgress, [0, 1], [-8, -20]);
 
   return (
-    <section className="py-24 bg-gray-50 pattern-header overflow-hidden" ref={sectionRef}> 
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 relative"> 
-        <div className="rounded-xl bg-[#337463] lg:w-[65rem] mx-auto py-12 px-6 md:px-16 lg:p-24 pattern-bg relative shadow-2xl text-gray-100"> 
+    <section className="lg:py-24 bg-gray-50 pattern-header overflow-hidden" ref={sectionRef}> 
+      <div className="max-w-7xl mx-auto lg:py-12 lg:px-4 sm:px-6 relative"> 
+        <div className="lg:rounded-xl bg-[#337463] lg:w-[65rem] mx-auto py-12 px-6 md:px-16 lg:p-24 pattern-bg relative shadow-2xl text-gray-100"> 
           <motion.div
             style={{ y: yImage1, x: xImage1, rotate: rotateImage1 }}
             className="absolute top-[-70px] left-[-50px] md:top-[-100px] md:left-[-30px] z-10" 
@@ -78,14 +78,14 @@ const Reason = () => {
               width={240}
               height={240}
               sizes="(max-width: 768px) 130px, 210px"
-              className="rounded-lg h-auto w-36 md:w-52 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" // Added hover effect 
+              className="rounded-lg h-auto hidden lg:block w-36 md:w-52 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" // Added hover effect 
               onError={(e) => e.currentTarget.src = 'https://placehold.co/240x240/cccccc/ffffff?text=Student'}
             />
           </motion.div>
 
           <motion.div
             style={{ y: yImage2, x: xImage2, rotate: rotateImage2 }}
-            className="absolute bottom-[-50px] right-[-40px] md:bottom-[-80px] md:right-[-20px] z-10" // Adjusted positioning slightly
+            className="absolute bottom-[-50px] right-[-40px] md:bottom-[-80px] md:right-[-20px] z-10" 
           >
             <Image
               src={"/assets/smiling-kids.jpg"}
@@ -93,7 +93,7 @@ const Reason = () => {
               width={240}
               height={240}
               sizes="(max-width: 768px) 160px, 240px"
-              className="rounded-lg h-auto w-44 md:w-60 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" 
+              className="rounded-lg h-auto w-44 hidden lg:block md:w-60 object-cover shadow-xl border-4 border-white transform group-hover:scale-105 transition-transform duration-300" 
               onError={(e) => e.currentTarget.src = 'https://placehold.co/240x240/cccccc/ffffff?text=Kids'}
             />
           </motion.div>
