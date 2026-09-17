@@ -9,7 +9,7 @@
  *
  * Ramp shape is fixed: 50 background · 100/150 border · 500 solid · 600 hover.
  * Change the hex in :root, never the step names — every variant file is
- * written against them.
+ * written against
  */
 
 @layer base {
