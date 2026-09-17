@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The African Child
 
-## Getting Started
+Public website plus two portals for a transparent secondary-school sponsorship programme.
 
-First, run the development server:
+- **Givers** (`/giver`): pledge monthly, see the total given, the children their money reaches, each child's term results and itemised spending, and contact the child's family.
+- **Admins** (`/admin`): register children (secondary school only, JSS1–SSS3), manage schools, upload term results and report sheets, record spending, and match children with givers.
+
+The structure follows [ARCHITECTURE.md](ARCHITECTURE.md), translated from Nuxt/Vue to Next.js/React.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install        # .npmrc sets legacy-peer-deps (react-simple-maps declares React ≤18)
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+With no backend configured, the app runs against an **in-browser mock API** that stores data in localStorage.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Portal | Sign-in page | Demo account |
+| ------ | ------------ | ------------ |
+| Giver  | `/auth/login` | `ngozi@example.com` / `giver1234` |
+| Admin  | `/admin/auth/login` | `admin@theafricanchild.org` / `admin1234` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To reset the demo data, clear the site's localStorage.
 
-## Learn More
+## Connecting a real API
 
-To learn more about Next.js, take a look at the following resources:
+1. Implement the contract in `src/lib/api-types.ts` at the paths used in `src/mock-backend/index.ts`. Every response uses the `ApiResponse` envelope.
+2. Set these environment variables:
+   - `NEXT_PUBLIC_API_MODE=http`
+   - `API_PROXY_TARGET=https://your-api` (proxied at `/backend`)
+3. Issue the `tac_session` cookie from the server (httpOnly, signed). The mock's client-set cookie only drives routing.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/app/(site)       public pages          src/components/n     design-system parts (N-prefixed)
+src/app/(auth)       sign-in / register    src/components/site  public-site sections
+src/app/(portal)     giver + admin portals src/lib              tokens' helpers: icons, status, format, http, routing
+src/features/<area>/<slice>/{domain,ports,adapters,application,composition,infrastructure,ui}
+src/middleware.ts    role gate (reads ROLE_ROUTE_MAP)
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Colours come only from the ramps in `src/app/globals.css`, which resets Tailwind's default palette (`--color-*: initial`). As a result, `bg-yellow-400`-style stock classes render nothing.

@@ -1,162 +1,231 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import "tailwindcss";
-@tailwind base;
-@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design tokens — the single source of truth for colour, radius and breakpoints.
+ *
+ * `--color-*: initial` wipes Tailwind's stock palette on purpose: `bg-slate-500`
+ * or `text-yellow-400` render NOTHING here. Only the ramps below exist. If a
+ * component is invisible, check it is using one of these names first.
+ *
+ * Ramp shape is fixed: 50 background · 100/150 border · 500 solid · 600 hover.
+ * Change the hex in :root, never the step names — every variant file is
+ * written against them.
+ */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Neutrals — warm, paper-like */
+    --base-0: #ffffff;
+    --base-50: #faf7f2;
+    --base-100: #f3eee5;
+    --base-150: #e7e0d4;
+    --base-400: #a59e92;
+    --base-500: #7a7368;
+    --base-550: #5f594f;
+    --base-600: #4a453d;
+    --base-900: #1f1c17;
+    --base-950: #12100d;
+
+    /* Accent — the brand green; primary actions and links */
+    --accent-50: #e9f4f0;
+    --accent-100: #cde5dc;
+    --accent-150: #a7d0c1;
+    --accent-500: #1d6b58;
+    --accent-600: #135445;
+
+    /* Status ramps */
+    --green-50: #ebf7ee;
+    --green-100: #d2edd8;
+    --green-150: #aedcb8;
+    --green-500: #2b8f45;
+    --green-600: #217538;
+
+    --red-50: #fdf0ee;
+    --red-100: #f9d9d4;
+    --red-150: #f1b6ad;
+    --red-500: #c4402e;
+    --red-600: #a13322;
+
+    --yellow-50: #fff8e1;
+    --yellow-100: #fdebb0;
+    --yellow-150: #f9da79;
+    --yellow-500: #dfa200;
+    --yellow-600: #a87a00;
+
+    /* Brand flow — large surfaces, hero chrome, the gold CTA */
+    --flow-primary: #0d3a32;
+    --flow-secondary: #f5b800;
+    --flow-s2: #164e44;
+    --flow-s3: #e0702a;
+    --flow-s4: #f8f0e1;
+    --flow-s5: #2a2018;
+    --flow-s6: #fde8a6;
+    --flow-stroke: #d8ccb6;
+
+    /* Data viz — single-series hue, validated against the light surface */
+    --chart-1: #0e8a6a;
+
+    --radius: 0.875rem;
+  }
+
+  * {
+    border-color: var(--base-150);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--base-50);
+    color: var(--base-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: var(--flow-s6);
+    color: var(--base-950);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --color-*: initial;
+
+  --color-base-0: var(--base-0);
+  --color-base-50: var(--base-50);
+  --color-base-100: var(--base-100);
+  --color-base-150: var(--base-150);
+  --color-base-400: var(--base-400);
+  --color-base-500: var(--base-500);
+  --color-base-550: var(--base-550);
+  --color-base-600: var(--base-600);
+  --color-base-900: var(--base-900);
+  --color-base-950: var(--base-950);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-150: var(--accent-150);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+
+  --color-green-50: var(--green-50);
+  --color-green-100: var(--green-100);
+  --color-green-150: var(--green-150);
+  --color-green-500: var(--green-500);
+  --color-green-600: var(--green-600);
+
+  --color-red-50: var(--red-50);
+  --color-red-100: var(--red-100);
+  --color-red-150: var(--red-150);
+  --color-red-500: var(--red-500);
+  --color-red-600: var(--red-600);
+
+  --color-yellow-50: var(--yellow-50);
+  --color-yellow-100: var(--yellow-100);
+  --color-yellow-150: var(--yellow-150);
+  --color-yellow-500: var(--yellow-500);
+  --color-yellow-600: var(--yellow-600);
+
+  --color-flow-primary: var(--flow-primary);
+  --color-flow-secondary: var(--flow-secondary);
+  --color-flow-s2: var(--flow-s2);
+  --color-flow-s3: var(--flow-s3);
+  --color-flow-s4: var(--flow-s4);
+  --color-flow-s5: var(--flow-s5);
+  --color-flow-s6: var(--flow-s6);
+  --color-flow-stroke: var(--flow-stroke);
+
+  --color-chart-1: var(--chart-1);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --spacing: 0.25rem;
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-3xl: calc(var(--radius) + 18px);
+
+  /* One copy of the breakpoints — no Vuetify, so nothing else to keep in step. */
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  --animate-rise: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade: fade 0.6s ease-out both;
+  --animate-marquee: marquee 40s linear infinite;
 }
 
-/* nav */
-
-nav ul {
-  list-style: none;
-  text-align: center;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-nav ul li a {
-  display: block;
-  text-decoration: none;
-}
-nav ul li a,
-nav ul li a:after,
-nav ul li a:before {
-  transition: all .5s;
-}
-nav ul li a:hover {
-  color: #CA8900;
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-/* stroke */
-nav.stroke ul li a,
-nav.fill ul li a {
-  position: relative;
-}
-nav.stroke ul li a:after,
-nav.fill ul li a:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  width: 0%;
-  content: '.';
-  color: transparent;
-  background: #aaa;
-  height: 1px;
-}
-nav.stroke ul li a:hover:after {
-  width: 100%;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.hero-bg {
-  background-image: url('/assets/img/school-kids-banner.jpg');
-  width: 100%;
-  height: 100vh;
-  background-position:cover;
-  background-size:center center;
-  background-repeat:no-repeat
-}
-@keyframes floatSlow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes floatFast {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.animate-float-slow {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.animate-float-fast {
-  animation: floatFast 3s ease-in-out infinite;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-}
-
-@keyframes slideUp {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-.pattern-bg {
-  background-image: url('/assets/pattern-footer.png');
-  background-position: center center;
-  background-size: auto;
+@utility pattern-footer {
+  background-image: url("/assets/pattern-footer.png");
   background-repeat: repeat;
 }
 
-.pattern-header {
-  background-image: url('/assets/pattern-header.png');
-  background-position: center center;
-  background-size: auto;
+@utility pattern-header {
+  background-image: url("/assets/pattern-header.png");
   background-repeat: repeat;
 }
 
-.map{
-  background-image: url('/assets/map.png');
-  background-position: center center;
-  background-size: auto;
-  background-repeat: no-repeat;
-  /* opacity: 0.15; */
-  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
-}
-
-.hero-common {
+@utility container-page {
   width: 100%;
-  height: 70vh;
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @variant md {
+    padding-inline: 2rem;
+  }
 }
 
-.about-hero {
-  background-image: url('/assets/african-life-child.jpg');
-}
-
-.our-work-hero {
-  background-image: url('/assets/community-help.jpg');
-}
-
-.donate-hero {
-  background-image: url('/assets/donation-bg.jpg');
-}
-
-.volunteer-hero {
-  background-image: url('/assets/volunteer.jpg');
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
